@@ -23,13 +23,13 @@ class FSMAdmin(StatesGroup):
 async def make_changes_command(message: types.Message):
     global ID
     ID = message.from_user.id
-    await bot.send_message(message.from_user.id, 'Что хозяин надо!?', reply_markup=admin_kb.button_case_admin)
+    await bot.send_message(message.from_user.id, 'Панель администратора. Здесь можно задать настройки и просмотреть записи', reply_markup=admin_kb.button_case_admin)
     await message.delete()
 
 
 # Начало диалога загрузки нового пункта меню
 # @dp.message_handler(commands='Загрузить', state=None)
-async def cm_start(message : types.Message):
+async def cm_start(message: types.Message):
     if message.from_user.id == ID:
         await FSMAdmin.photo.set()
         await message.reply('Загрузи фото')

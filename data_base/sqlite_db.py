@@ -5,11 +5,12 @@ from create_bot import bot
 def sql_start():
     global base, cur
     # Если БД еще нет, она автоматически создается
-    base = sq.connect('pizza_cool.db')
+    base = sq.connect('data_base.db')
     cur = base.cursor()
     if base:
-        print('База данных подключена')
-    base.execute('CREATE TABLE IF NOT EXISTS menu(img TEXT, name TEXT PRIMARY KEY, description TEXT, price TEXT)')
+        print('База данных data_base подключена')
+    base.execute('CREATE TABLE IF NOT EXISTS data(img TEXT, name TEXT PRIMARY KEY, description TEXT, price TEXT)')
+    base.execute('CREATE TABLE IF NOT EXISTS beauty_treatments(name TEXT PRIMARY KEY, execution_time TEXT)')
     base.commit()
 
 
