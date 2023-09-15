@@ -25,7 +25,11 @@ async def sql_read(message):
         await bot.send_photo(message.from_user.id, ret[0], f'{ret[1]}\nОписание: {ret[2]}\nЦена: {ret[-1]}')
 
 
-
+'''********* для таблицы beauty_treatments *********'''
+async def to_beauty_treatments_db(state):
+    async with state.proxy() as data:
+        cur.execute('UPDATE beauty_treatments VALUES (?, ?)', tuple(data.values()))
+        base.commit()
 
 
 
